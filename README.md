@@ -12,3 +12,6 @@ This is to tryout about pushing and pulling through computer
 
 # Something for New Directory
 This is to Something to Try outs
+
+# Cloning Update
+This updation is made from cloning directory
