@@ -9,3 +9,6 @@ This is to Shorout stuff
 
 # For Try from PC
 This is to tryout about pushing and pulling through computer
+
+# Something for New Directory
+This is to Something to Try outs
