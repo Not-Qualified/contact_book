@@ -12,3 +12,6 @@ This is to Something to Try outs
 
 # Branch Example
 This edit is from another branch than master
+
+# Another Branch Example
+This is to update
