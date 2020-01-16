@@ -1,3 +1,4 @@
 customer/__pycache__/*
 customer/migrations/__pycache__/*
 laxmi/__pycache__/*
+venv/*
