@@ -1,0 +1,50 @@
+{% extends "customer/base.html" %}
+{% load static %}
+{% block content %}
+
+
+	<!-- Breadcrumbs Start
+    ================================================== -->
+
+{% with url_name=request.resolver_match.url_name %}
+	<section id="topic-header">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+						<h1>Customer Deletion</h1>
+						<p>Delete Customer Confirmation</p>
+				</div>	<!-- End of /.col-md-4 -->
+				<div class="col-md-8 hidden-xs">
+					<ol class="breadcrumb pull-right">
+					  	<li><a href="#">Home</a></li>
+					  	<li class="active">Delete</li>
+					</ol>
+				</div>	<!-- End of /.col-md-8 -->
+			</div>	<!-- End of /.row -->
+		</div>	<!-- End of /.container -->
+	</section>	<!-- End of /#Topic-header -->
+
+
+
+	<!-- PRODUCTS Start
+    ================================================== -->
+
+	<section id="shop">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9" style="margin-bottom: 3em;">
+					<div class="products-heading">
+						<h2>Delete Customer</h2>
+					</div>	<!-- End of /.Products-heading -->
+						<form method="POST">
+							{% csrf_token %}
+							<h2>Are You Sure You Want to Delete - {{ object.first_name}} {{ object.last_name }} ?</h2>
+							<h5>***Once You Delete Customer there is no way You can Get it Back, So think Twice</h5>
+							<input class="btn btn-danger btn-lg btn-block" type="submit" value="Delete" />
+						</form>
+						<br />
+
+						<a class="btn btn-primary btn-lg btn-block" href="{% url 'customer-detail' object.id %}">Cancel</a>
+				</div>	<!-- End of /.col-md-9 -->
+{% endwith %}
+{% endblock content %}

@@ -1,0 +1,113 @@
+{% extends "customer/base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+	<!-- Breadcrumbs Start
+    ================================================== -->
+
+	<section id="topic-header">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<h1>Customer Detail</h1>
+				</div>	<!-- End of /.col-md-4 -->	
+				<div class="col-md-8 hidden-xs">
+					<ol class="breadcrumb pull-right">
+					  	<li><a href="#">Home</a></li>
+					  	<li class="active">Detail</li>
+					</ol>
+				</div>	<!-- End of /.col-md-8 -->
+			</div>	<!-- End of /.row -->
+		</div>	<!-- End of /.container -->
+	</section>	<!-- End of /#Topic-header -->
+
+
+	<section id="blog">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 clearfix">
+					<ul class="blog-zone">
+					    <li>
+					        <div class="blog-icon">
+					        	<i class="fa  fa-pencil"></i>
+					        </div>
+					        <div class="blog-box">
+					        	<!-- <img src="{% static 'images/blog-1.jpg' %}" alt=""> -->
+					            
+					            <div class="blog-post-body clearfix">
+						            <a href="#">
+					            		<h2>{{ object.first_name }} {{ object.last_name }}</h2>
+						            </a>
+					            	<div class="blog-post-tag">
+						            	<div class="block">
+						            		<i class="fa fa-user"></i>
+						            		<p>Full Name : {{ object.first_name }} {{ object.middle_name }} {{ object.last_name }}</p>
+						            	</div><br />
+						            	<div class="block">
+						            		<i class="fa fa-venus-mars"></i>
+						            		<p>Sex : {{ object.sex }}</p>
+						            	</div><br />
+						            	<div class="block">
+						            		<i class="fa fa-graduation-cap"></i>
+						            		<p>Occupation/Job : {{ object.job }}</p>
+						            	</div><br />
+						            	<div class="block">
+						            		<i class="fa fa-phone"></i>
+						            		<p>Mobile : {{ object.mobile_one }}, {{ object.mobile_two }}</p>
+						            	</div><br />
+						            	<div class="block">
+						            		<i class="fa fa-envelope"></i>
+						            		<p>Email : {{ object.email }}</p>
+						            	</div><br />
+						            	<div class="block">
+						            		<i class="fa fa-map-marker"></i>
+						            		<p>Address : {{ object.address_one }}</p>
+						            		<p>{{ object.address_two }}</p>
+						            	</div><br />
+						            	<div class="block">
+						            		<i class="fa fa-map-marker"></i>
+						            		<p>City : {{ object.city }}, Pincode : {{ object.pincode }}, Country : {{ object.country }}</p>
+						            	</div><br />
+						            	<div class="block">
+						            		<i class="fa fa-info-circle"></i>
+						            		<p>Detail : {{ object.detail }}</p>
+						            	</div><br />
+						            </div><br />
+
+
+						            <a href="{% url 'customer-update' object.id %}" class="btn btn-default btn-transparent pull-right" role="button">
+								        <span>Edit Customer</span>
+								    </a>
+					            </div>
+					        </div>	<!-- End of /.blog-box -->
+					    </li>
+					  </ul>	<!-- End of /.blog-zone -->
+
+					<!-- Pagination -->
+					{% if is_paginated %}
+					<ul class="pagination pull-right">
+						{% if page_obj.has_previous %}
+							<li><a href="?page=1">First</a></li>
+					  		<li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+					  	{% endif %}
+
+					  	{% for num in page_obj.paginator.page_range %}
+					  		{% if page_obj.number == num %}
+					  			<li class="active"><a href="?page={{ num }}">{{ num }}<span class="sr-only"></span></a></li>
+					  		{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+					  			<li><a href="?page={{ num }}">{{ num }}</a></li>
+					  		{% endif %}
+					  	{% endfor %}
+
+					  	{% if page_obj.has_next %}
+					  		<li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+					  		<li><a href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
+					  	{% endif %}
+
+					</ul>	<!-- End of /.pagination -->
+					{% endif %}
+				</div>	<!-- End of /.col-md-9 -->
+					
+{% endblock content %}
